@@ -506,5 +506,71 @@ public class BookMarkService {
 
         return bookMarkList;
     }
+    /*
+     * 북마크 삭제
+     * @param String ID
+     * @return 성공여부 boolean
+     *  */
+    public boolean deleteBookMark(String id){
+        boolean result = false;
+
+        String url = "jdbc:mariadb://192.168.35.35:3306/mission1";
+        String userId = "root";
+        String passwd = "1111";
+
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet rs = null;
+
+        try{
+            Class.forName("org.mariadb.jdbc.Driver");
+            connection = DriverManager.getConnection(url,userId,passwd);
+            String sql = "DELETE FROM bookmark WHERE ID = ?";
+
+            statement = connection.prepareStatement(sql);
+            statement.setString(1, id);
+
+
+            int affected = statement.executeUpdate();
+            if(affected > 0) {
+                result = true;
+            }else {
+                System.out.println(id+"삭제 실패");
+            }
+
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }finally {
+
+            try {
+                if(rs != null && !rs.isClosed()){
+                    rs.close();
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            try {
+                if(statement != null && !statement.isClosed()){
+                    statement.close();
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            try {
+                if(connection != null && !connection.isClosed()){
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+        }
+        return result;
+    }
 
 }

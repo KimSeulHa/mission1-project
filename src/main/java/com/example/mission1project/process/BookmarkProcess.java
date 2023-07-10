@@ -53,5 +53,10 @@ public class BookmarkProcess {
 
         return bookMarkList;
     }
+
+    public boolean deleteBookMark(String id) {
+        BookMarkService service = new BookMarkService();
+        return service.deleteBookMark(id);
+    }
 }
 

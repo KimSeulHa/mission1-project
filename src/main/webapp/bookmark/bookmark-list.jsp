@@ -41,7 +41,6 @@
 <h1>와이파이 정보 구하기</h1>
 <jsp:include page="/common/head.jsp"/>
 <br><br>
-<button id="moveBookMarkAddPage">북마크 그룹 이름 추가</button>
 
 <br><br>
 <table>
@@ -70,7 +69,7 @@
                         <td><%=bookMark.getWifiNm()%></td>
                         <td><%=bookMark.getRegDate()%></td>
                         <td>
-                            <a href = "/bookmark/bookmark-group-delete.jsp?id=<%=bookMark.getID()%>">삭제</a>
+                            <a href = "/bookmark/bookmark-delete.jsp?id=<%=bookMark.getID()%>">삭제</a>
                         </td>
                     </tr>
         <%      }
@@ -82,11 +81,6 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script>
-    $(function () {
-        $("#moveBookMarkAddPage").click(function(){
-            window.location.href = "/bookmark/bookmark-group-add.jsp";
-        });
 
-    });
 </script>
 </html>
