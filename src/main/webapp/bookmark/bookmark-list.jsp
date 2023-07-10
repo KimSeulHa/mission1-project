@@ -41,8 +41,6 @@
 <h1>와이파이 정보 구하기</h1>
 <jsp:include page="/common/head.jsp"/>
 <br><br>
-
-<br><br>
 <table>
     <thead>
         <tr>
